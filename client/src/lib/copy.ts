@@ -1,0 +1,36 @@
+// All user-facing page copy lives here, beside the brand configuration.
+export const BRAND = { name: 'Project Room', eyebrow: 'A little space. A shared purpose.', tagline: 'Good ideas happen together.' };
+export const COPY = {
+  localBadge: 'LOCAL DEMO', phase: 'Phase 3 · A shared room',
+  localNote: 'Everything stays on this computer.',
+  landingTitle: 'Great group work\nstarts with a room.',
+  landingDescription: 'A shared space for university projects. Bring your people, make a plan, and give everyone a place at the table.',
+  tryDemo: 'Try Demo', enter: 'Enter your room', demoLogin: 'Demo Login',
+  loginTitle: 'Who’s joining us?', loginIntro: 'Choose a local profile, or make one of your own.',
+  firstProfile: 'Your table is waiting.', firstProfileDetail: 'Start by creating your first local demo profile.',
+  displayName: 'Display name', displayEmail: 'Email (optional, display only)',
+  createProfile: 'Create local profile', addProfile: 'Add a local profile', switchProfile: 'Switch demo profile',
+  profileHint: 'Profiles simulate teammates on this computer. No password or verified email needed.',
+  projectsTitle: 'My Projects', projectsSubtitle: 'Your shared spaces, all in one place.',
+  emptyTitle: 'A blank page. A fresh start.', emptyDetail: 'Your projects will live here. Create a room for your group, or join one with a local invitation.',
+  createProject: 'Create New Project', createProjectDetail: 'Make room for your next big idea.',
+  joinProject: 'Join a Project', joinProjectDetail: 'Have a code? Pull up a chair.',
+  invitationHint: 'Local invitations work with profiles in this same running demo and database. They do not invite people on other computers.',
+  wizardTitle: 'Make room for your team.', wizardSubtitle: 'A name, a rough plan, and a few good people.',
+  wizardSteps: ['Project Info', 'Stages & Tasks', 'Invite Members'],
+  stagesHint: 'Start with a rough plan. Assign owners and personal deadlines on the Whiteboard before confirming it.',
+  inviteTitle: 'Your room is ready for company.', inviteDetail: 'Switch to another local profile and enter this code to join.',
+  avatarTitle: 'Set up your avatar', avatarSubtitle: 'A familiar face. A favorite character. Your place at the table.',
+  avatarHint: 'Choose a preset or upload a pre-cut PNG. Images stay as uploaded; automatic background removal is not available.',
+  avatarPreview: 'This is how your avatar will appear in this project.',
+  workspaceNotice: 'Your room is taking shape. Planning, submissions, reviews, files, and chat are coming in Phase 2.',
+  draftNotice: 'Draft setup · Your initial plan has not been confirmed.',
+  upcomingTitle: 'Upcoming Tasks', upcomingEmpty: 'Nothing due here yet.', upcomingDetail: 'Assigned work across your active projects appears here. Make a plan together on the Whiteboard.',
+  homeProjects: 'Browse My Projects', homeProjectsDetail: 'Find your shared spaces.',
+  loading: 'Opening your room…', retry: 'Try again', back: 'Back', next: 'Continue',
+  save: 'Save changes', saving: 'Saving…', cancel: 'Cancel', copyCode: 'Copy code', copyLink: 'Copy invitation link', copied: 'Copied!',
+  noMatches: 'No rooms match this view.', noMatchesDetail: 'Try another filter or search term.',
+  pngError: 'Choose a PNG smaller than 5 MB.',
+};
+export function dateLabel(value: string) { return new Intl.DateTimeFormat('en', { month:'short', day:'numeric', year:'numeric' }).format(new Date(value)); }
+export function dateTimeLabel(value: string) { return new Intl.DateTimeFormat('en', { month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit' }).format(new Date(value)); }

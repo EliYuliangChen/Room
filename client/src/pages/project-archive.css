@@ -1,0 +1,5 @@
+.project-card-entry{display:block}
+.project-card-actions{border-top:1px solid var(--line);margin-top:15px;padding-top:10px}
+.project-card-actions>.text-link{font-size:12px;text-decoration:none;color:var(--muted)}
+.project-card-actions>.text-link:hover{color:var(--ink)}
+.archive-draft-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:24px}

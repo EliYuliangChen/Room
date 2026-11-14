@@ -1,0 +1,32 @@
+.datetime-field{margin-bottom:22px;min-width:0}
+.datetime-field>label,.wizard-panel .datetime-field>label,.change-editor .datetime-field>label{margin-bottom:8px}
+.datetime-picker{position:relative}
+.deadline-trigger{display:flex;align-items:center;gap:12px;width:100%;min-height:47px;padding:11px 14px;border:1.2px solid #b6ada3;border-radius:5px 7px 4px 6px;background:#fffefa;font-size:14px;text-align:left}
+.deadline-trigger>span{flex:1}
+.deadline-trigger>svg{stroke-width:1.5}
+.deadline-trigger>svg:last-child{color:var(--muted);transform:rotate(90deg)}
+.deadline-trigger>svg.is-open:last-child{transform:rotate(-90deg)}
+.deadline-trigger[aria-expanded=true]{border-color:var(--ink);background:#fcf8ef}
+.datetime-field>small{display:block;margin-top:7px;font-size:11px}
+.deadline-calendar{position:fixed;z-index:40;width:344px;padding:17px 18px 15px;border:1.3px solid var(--ink);border-radius:8px 11px 7px 9px;background:var(--canvas);box-shadow:4px 5px 0 #302d2814}
+.deadline-calendar-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+.deadline-calendar-heading h3{margin:0;font:26px var(--font-hand)}
+.deadline-calendar-heading .icon-button{min-width:29px;min-height:29px;padding:4px}
+.deadline-weekdays,.deadline-days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.deadline-weekdays{font-size:10px;color:var(--muted);text-align:center;margin-bottom:6px}
+.deadline-weekdays>span{padding:6px}
+.deadline-days{min-height:202px;align-content:start}
+.deadline-days>button,.deadline-days>span{height:37px;min-width:0}
+.deadline-days>button{border:1px solid transparent;border-radius:48% 45% 48% 43%;font-size:13px;padding:0}
+.deadline-days>button:hover{background:var(--paper)}
+.deadline-days>.is-today{border-color:#b0b99e}
+.deadline-days>[aria-pressed=true]{background:var(--ink);color:var(--canvas);border-color:var(--ink)}
+.deadline-time{display:flex;align-items:center;gap:8px;padding:14px 0;margin-top:12px;border-top:1px solid var(--line)}
+.deadline-time>span:first-child{display:flex;align-items:center;gap:7px;margin-right:auto;font-size:12px}
+.deadline-time>span:first-child small{font-size:9px}
+.deadline-time>.ink-select{min-width:62px;width:62px}
+.deadline-time>.ink-select>button{min-height:35px;padding:6px 8px;gap:5px;font-size:12px}
+.deadline-calendar-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:12px}
+.deadline-calendar-footer>.text-link{font:19px var(--font-hand);text-decoration:none;padding:5px}
+.deadline-calendar-footer>.button{min-height:33px;padding:4px 12px;font-size:16px}
+.deadline-error{display:block;color:#873f35;font-size:12px;margin-top:6px}

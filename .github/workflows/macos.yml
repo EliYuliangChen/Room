@@ -1,0 +1,46 @@
+name: macOS compatibility
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  macos:
+    name: macOS ${{ matrix.arch }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { runner: macos-15, arch: arm64 }
+          - { runner: macos-15-intel, arch: x64 }
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          architecture: ${{ matrix.arch }}
+      - name: Install locked dependencies
+        run: npm ci --include=optional
+      - name: Check the artwork dependency
+        run: node -e "require('@resvg/resvg-js')"
+      - run: npm run build
+      - run: npm test
+      - name: Start the built app with an empty database
+        shell: bash
+        run: |
+          DATA_DIR="$RUNNER_TEMP/room-smoke" node dist/server/server/src/index.js >"$RUNNER_TEMP/room.log" 2>&1 &
+          server_pid=$!
+          trap 'status=$?; kill "$server_pid" 2>/dev/null || true; wait "$server_pid" 2>/dev/null || true; if [ "$status" -ne 0 ]; then cat "$RUNNER_TEMP/room.log"; fi' EXIT
+          curl --fail --silent --show-error --retry 10 --retry-connrefused --retry-delay 1 http://127.0.0.1:3001/api/health
+          test "$(curl --fail --silent --show-error http://127.0.0.1:3001/api/demo-users)" = '[]'
+          curl --fail --silent --show-error http://127.0.0.1:3001/ | grep -q '/assets/index-'

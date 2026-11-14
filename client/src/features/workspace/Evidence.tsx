@@ -1,0 +1,15 @@
+import { Select } from '../../components/Select';
+import { useState } from 'react';
+import type { Project, TaskNode } from '../../../../shared/types';
+import { api } from '../../lib/api';
+import { dateTimeLabel } from '../../lib/copy';
+import type { Mutate } from './types';
+export function Evidence({task,project,userId,mutate,busy,initialVersion}:{task:TaskNode;project:Project;userId:string;mutate:Mutate;busy:boolean;initialVersion?:string}) {
+  const [version,setVersion]=useState(initialVersion||task.current_submission_id||task.submissions[0]?.id||''),[note,setNote]=useState('');
+  const s=task.submissions.find(s=>s.id===version)||task.submissions[0];
+  if(!s)return <p className="fine-print">No submissions yet. Only approved work counts toward progress.</p>;
+  const canVote=project.status==='ongoing'&&!task.retired_at&&s.id===task.current_submission_id&&s.outcome==='pending_review'&&s.author_id!==userId&&!s.votes.some(v=>v.reviewer_id===userId);
+  return <section className="evidence"><label>Submission history<Select value={s.id} onChange={e=>setVersion(e.target.value)}>{task.submissions.map(v=><option key={v.id} value={v.id}>Version {v.version_no} · {v.outcome.replaceAll('_',' ')} · {dateTimeLabel(v.submitted_at)}</option>)}</Select></label><div className="evidence-meta"><span className="pill">{s.outcome.replaceAll('_',' ')}</span><span>By {project.members.find(m=>m.user_id===s.author_id)?.display_name} · {dateTimeLabel(s.submitted_at)}</span></div>{s.id!==task.current_submission_id&&<p className="fine-print">Historical version. Votes remain attached to this version only.</p>}{s.description&&<p className="preserve-lines">{s.description}</p>}{s.text_body&&<div className="evidence-text preserve-lines">{s.text_body}</div>}{s.links.map(link=><a className="external-link" key={link} href={link} target="_blank" rel="noreferrer">{link} ↗</a>)}{s.files.map(file=><a key={file.id} className="download-link" href={api.fileHref(file.id)}>↓ {file.original_name} <small>({Math.ceil(file.byte_size/1024)} KB)</small></a>)}<p className="fine-print">{s.votes.filter(v=>v.decision==='approve').length} approvals · {s.threshold} required from the other members.</p><div className="vote-list">{s.votes.map(v=><div key={v.reviewer_id}><strong>{v.display_name}</strong><span className="pill">{v.decision.replaceAll('_',' ')}</span>{v.note&&<p className="preserve-lines">{v.note}</p>}<small>{dateTimeLabel(v.created_at)}</small></div>)}</div>
+    {canVote&&<><label>Review note <span className="optional">required for Request Changes</span><textarea maxLength={2000} value={note} onChange={e=>setNote(e.target.value)} rows={2}/></label><div className="button-row"><button className="button primary" disabled={busy} onClick={()=>mutate(()=>api.review(s.id,'approve',note),'Approval recorded.')}>Approve</button><button className="button" disabled={busy||!note.trim()} onClick={()=>mutate(()=>api.review(s.id,'request_changes',note),'Review recorded.')}>Request Changes</button></div></>}
+  </section>;
+}

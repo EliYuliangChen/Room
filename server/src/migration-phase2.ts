@@ -1,0 +1,25 @@
+export const phase2Migration = `
+ALTER TABLE projects ADD COLUMN archived_at TEXT;
+ALTER TABLE tasks ADD COLUMN retired_at TEXT;
+ALTER TABLE tasks ADD COLUMN active_submission_from INTEGER NOT NULL DEFAULT 1;
+ALTER TABLE stages ADD COLUMN retired_at TEXT;
+ALTER TABLE project_members ADD COLUMN chat_read_at TEXT;
+ALTER TABLE project_members ADD COLUMN chat_read_seq INTEGER NOT NULL DEFAULT 0;
+CREATE TABLE submissions (id TEXT PRIMARY KEY, leaf_task_id TEXT NOT NULL REFERENCES tasks(id), author_id TEXT NOT NULL REFERENCES demo_users(id), version_no INTEGER NOT NULL, text_body TEXT NOT NULL, link_urls_json TEXT NOT NULL, description TEXT NOT NULL, submitted_at TEXT NOT NULL, outcome TEXT NOT NULL CHECK(outcome IN ('pending_review','changes_requested','approved')), UNIQUE(leaf_task_id,version_no));
+CREATE TABLE submission_files (id TEXT PRIMARY KEY, submission_id TEXT NOT NULL REFERENCES submissions(id), original_name TEXT NOT NULL, stored_name TEXT NOT NULL UNIQUE, mime_type TEXT NOT NULL, byte_size INTEGER NOT NULL, created_at TEXT NOT NULL);
+CREATE TABLE review_votes (submission_id TEXT NOT NULL REFERENCES submissions(id), reviewer_id TEXT NOT NULL REFERENCES demo_users(id), decision TEXT NOT NULL CHECK(decision IN ('approve','request_changes')), note TEXT NOT NULL, created_at TEXT NOT NULL, PRIMARY KEY(submission_id,reviewer_id));
+CREATE TABLE change_requests (id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id), author_id TEXT NOT NULL REFERENCES demo_users(id), type TEXT NOT NULL, before_json TEXT NOT NULL, proposed_json TEXT NOT NULL, reason TEXT NOT NULL, status TEXT NOT NULL, created_at TEXT NOT NULL, applied_at TEXT, withdrawn_at TEXT);
+CREATE TABLE change_votes (request_id TEXT NOT NULL REFERENCES change_requests(id), voter_id TEXT NOT NULL REFERENCES demo_users(id), decision TEXT NOT NULL CHECK(decision IN ('approve','reject')), created_at TEXT NOT NULL, PRIMARY KEY(request_id,voter_id));
+CREATE TABLE required_consents (request_id TEXT NOT NULL REFERENCES change_requests(id), target_user_id TEXT NOT NULL REFERENCES demo_users(id), status TEXT NOT NULL CHECK(status IN ('pending','accepted','rejected')), responded_at TEXT, PRIMARY KEY(request_id,target_user_id));
+CREATE TABLE announcements (id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id), message TEXT NOT NULL, related_request_id TEXT REFERENCES change_requests(id), created_at TEXT NOT NULL);
+CREATE TABLE notifications (id TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES demo_users(id), project_id TEXT NOT NULL REFERENCES projects(id), kind TEXT NOT NULL, entity_id TEXT, dedupe_key TEXT UNIQUE, text TEXT NOT NULL, read_at TEXT, created_at TEXT NOT NULL);
+CREATE TABLE shared_resources (id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id), stage_id TEXT NOT NULL REFERENCES stages(id), kind TEXT NOT NULL CHECK(kind IN ('file','link','note')), title TEXT NOT NULL, body_or_url TEXT NOT NULL, stored_file_name TEXT, original_name TEXT, mime_type TEXT, byte_size INTEGER, author_id TEXT NOT NULL REFERENCES demo_users(id), created_at TEXT NOT NULL, updated_at TEXT NOT NULL, deleted_at TEXT);
+CREATE TABLE chat_messages (id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id), author_id TEXT NOT NULL REFERENCES demo_users(id), body TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE TABLE activity_events (id TEXT PRIMARY KEY, project_id TEXT NOT NULL REFERENCES projects(id), actor_id TEXT NOT NULL REFERENCES demo_users(id), event_kind TEXT NOT NULL, entity_id TEXT, details_json TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE INDEX submissions_task_idx ON submissions(leaf_task_id,version_no);
+CREATE INDEX requests_project_idx ON change_requests(project_id,created_at);
+CREATE INDEX notices_user_idx ON notifications(user_id,read_at,created_at);
+CREATE INDEX resources_project_idx ON shared_resources(project_id,stage_id);
+CREATE INDEX chat_project_idx ON chat_messages(project_id,created_at);
+CREATE INDEX activity_project_idx ON activity_events(project_id,created_at);
+`;

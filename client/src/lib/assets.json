@@ -1,0 +1,427 @@
+{
+  "room-shell": {
+    "path": "/assets/illustrations/phase3/room-shell.svg",
+    "width": 1200,
+    "height": 650,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 1200,
+      "height": 650
+    },
+    "anchor": "bottom-center",
+    "zIndex": 0,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 1200,
+    "nominalHeight": 650
+  },
+  "floor-rug": {
+    "path": "/assets/illustrations/phase3/floor-rug.svg",
+    "width": 1000,
+    "height": 130,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 1000,
+      "height": 130
+    },
+    "anchor": "bottom-center",
+    "zIndex": 1,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 1000,
+    "nominalHeight": 130
+  },
+  "whiteboard-blank": {
+    "path": "/assets/illustrations/phase3/whiteboard-blank.svg",
+    "width": 600,
+    "height": 280,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 600,
+      "height": 280
+    },
+    "anchor": "bottom-center",
+    "zIndex": 2,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 600,
+    "nominalHeight": 280
+  },
+  "ceiling-lamp": {
+    "path": "/assets/illustrations/phase3/ceiling-lamp.svg",
+    "width": 150,
+    "height": 150,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 150,
+      "height": 150
+    },
+    "anchor": "bottom-center",
+    "zIndex": 2,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 150,
+    "nominalHeight": 150
+  },
+  "door-right": {
+    "path": "/assets/illustrations/phase3/door-right.svg",
+    "width": 130,
+    "height": 340,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 130,
+      "height": 340
+    },
+    "anchor": "bottom-center",
+    "zIndex": 1,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 130,
+    "nominalHeight": 340
+  },
+  "plant-large": {
+    "path": "/assets/illustrations/phase3/plant-large.svg",
+    "width": 128,
+    "height": 235,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 128,
+      "height": 235
+    },
+    "anchor": "bottom-center",
+    "zIndex": 2,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 128,
+    "nominalHeight": 235
+  },
+  "plant-small": {
+    "path": "/assets/illustrations/phase3/plant-small.svg",
+    "width": 128,
+    "height": 235,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 128,
+      "height": 235
+    },
+    "anchor": "bottom-center",
+    "zIndex": 2,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 128,
+    "nominalHeight": 235
+  },
+  "mug": {
+    "path": "/assets/illustrations/phase3/mug.svg",
+    "width": 60,
+    "height": 55,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 60,
+      "height": 55
+    },
+    "anchor": "bottom-center",
+    "zIndex": 6,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 60,
+    "nominalHeight": 55
+  },
+  "notebook": {
+    "path": "/assets/illustrations/phase3/notebook.svg",
+    "width": 90,
+    "height": 40,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 90,
+      "height": 40
+    },
+    "anchor": "bottom-center",
+    "zIndex": 6,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 90,
+    "nominalHeight": 40
+  },
+  "pencils": {
+    "path": "/assets/illustrations/phase3/pencils.svg",
+    "width": 48,
+    "height": 65,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 48,
+      "height": 65
+    },
+    "anchor": "bottom-center",
+    "zIndex": 6,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 48,
+    "nominalHeight": 65
+  },
+  "sticky-note": {
+    "path": "/assets/illustrations/phase3/sticky-note.svg",
+    "width": 130,
+    "height": 115,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 130,
+      "height": 115
+    },
+    "anchor": "bottom-center",
+    "zIndex": 2,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 130,
+    "nominalHeight": 115
+  },
+  "clipboard": {
+    "path": "/assets/illustrations/phase3/clipboard.svg",
+    "width": 100,
+    "height": 130,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 100,
+      "height": 130
+    },
+    "anchor": "bottom-center",
+    "zIndex": 2,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 100,
+    "nominalHeight": 130
+  },
+  "doodle-spark": {
+    "path": "/assets/illustrations/phase3/doodle-spark.svg",
+    "width": 60,
+    "height": 60,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 60,
+      "height": 60
+    },
+    "anchor": "bottom-center",
+    "zIndex": 2,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 60,
+    "nominalHeight": 60
+  },
+  "desk-top": {
+    "path": "/assets/illustrations/phase3/desk.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": {
+      "x": 64,
+      "y": 92,
+      "width": 2044,
+      "height": 545
+    },
+    "anchor": "bottom-center",
+    "zIndex": 5,
+    "decorative": true,
+    "status": "generated-layer",
+    "nominalWidth": 495,
+    "nominalHeight": 134
+  },
+  "chair": {
+    "path": "/assets/illustrations/phase3/chair.png",
+    "width": 1086,
+    "height": 1448,
+    "bounds": {
+      "x": 53,
+      "y": 112,
+      "width": 981,
+      "height": 1283
+    },
+    "anchor": "bottom-center",
+    "zIndex": 3,
+    "decorative": true,
+    "status": "generated-layer",
+    "nominalWidth": 124,
+    "nominalHeight": 204
+  },
+  "laptop-front": {
+    "path": "/assets/illustrations/phase3/laptop.png",
+    "width": 1448,
+    "height": 1086,
+    "bounds": {
+      "x": 54,
+      "y": 198,
+      "width": 1342,
+      "height": 696
+    },
+    "anchor": "bottom-center",
+    "zIndex": 6,
+    "decorative": true,
+    "status": "generated-layer",
+    "nominalWidth": 110,
+    "nominalHeight": 66
+  },
+  "bookshelf-files": {
+    "path": "/assets/illustrations/phase3/bookshelf.png",
+    "width": 971,
+    "height": 1619,
+    "bounds": {
+      "x": 168,
+      "y": 105,
+      "width": 673,
+      "height": 1428
+    },
+    "anchor": "bottom-center",
+    "zIndex": 2,
+    "decorative": true,
+    "status": "generated-layer",
+    "nominalWidth": 122,
+    "nominalHeight": 260
+  },
+  "submit-tray-sign": {
+    "path": "/assets/illustrations/phase3/cabinet.png",
+    "width": 1086,
+    "height": 1448,
+    "bounds": {
+      "x": 235,
+      "y": 105,
+      "width": 649,
+      "height": 1250
+    },
+    "anchor": "bottom-center",
+    "zIndex": 2,
+    "decorative": true,
+    "status": "generated-layer",
+    "nominalWidth": 119,
+    "nominalHeight": 177
+  },
+  "cat": {
+    "path": "/assets/illustrations/phase3/cat.png",
+    "width": 1222,
+    "height": 1287,
+    "bounds": {
+      "x": 177,
+      "y": 4,
+      "width": 983,
+      "height": 1241
+    },
+    "anchor": "bottom-center",
+    "zIndex": 4,
+    "decorative": false,
+    "status": "generated-layer",
+    "nominalWidth": 152,
+    "nominalHeight": 156
+  },
+  "donut": {
+    "path": "/assets/illustrations/phase3/donut.png",
+    "width": 1293,
+    "height": 1216,
+    "bounds": {
+      "x": 100,
+      "y": 92,
+      "width": 1093,
+      "height": 1055
+    },
+    "anchor": "bottom-center",
+    "zIndex": 4,
+    "decorative": false,
+    "status": "generated-layer",
+    "nominalWidth": 152,
+    "nominalHeight": 156
+  },
+  "pencil": {
+    "path": "/assets/illustrations/phase3/pencil.png",
+    "width": 200,
+    "height": 230,
+    "bounds": {
+      "x": 57,
+      "y": 3,
+      "width": 84,
+      "height": 211
+    },
+    "anchor": "bottom-center",
+    "zIndex": 4,
+    "decorative": false,
+    "status": "crafted-vector-png",
+    "nominalWidth": 152,
+    "nominalHeight": 156
+  },
+  "office-01": {
+    "path": "/assets/illustrations/phase3/office-01.svg",
+    "width": 560,
+    "height": 300,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 560,
+      "height": 300
+    },
+    "anchor": "center",
+    "zIndex": 0,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 560,
+    "nominalHeight": 300
+  },
+  "office-02": {
+    "path": "/assets/illustrations/phase3/office-02.svg",
+    "width": 560,
+    "height": 300,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 560,
+      "height": 300
+    },
+    "anchor": "center",
+    "zIndex": 0,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 560,
+    "nominalHeight": 300
+  },
+  "office-03": {
+    "path": "/assets/illustrations/phase3/office-03.svg",
+    "width": 560,
+    "height": 300,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 560,
+      "height": 300
+    },
+    "anchor": "center",
+    "zIndex": 0,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 560,
+    "nominalHeight": 300
+  },
+  "office-04": {
+    "path": "/assets/illustrations/phase3/office-04.svg",
+    "width": 560,
+    "height": 300,
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 560,
+      "height": 300
+    },
+    "anchor": "center",
+    "zIndex": 0,
+    "decorative": true,
+    "status": "crafted-vector",
+    "nominalWidth": 560,
+    "nominalHeight": 300
+  }
+}

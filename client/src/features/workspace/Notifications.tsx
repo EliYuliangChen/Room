@@ -1,0 +1,12 @@
+import { useEffect,useState } from 'react';
+import { Bell } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import type { Notification } from '../../../../shared/types';
+import { api, roomUpdates } from '../../lib/api';
+import { dateTimeLabel } from '../../lib/copy';
+import { ErrorNote,Modal } from '../../components/ui';
+export function noticeQuery(n:Notification){const key=n.kind==='review'||n.kind==='review_result'?'review':['request','consent','apply_change','request_result','announcement'].includes(n.kind)?'request':'task';return n.entity_id?`?${key}=${encodeURIComponent(n.entity_id)}`:'';}
+export function NotificationList({items,onOpen}:{items:Notification[];onOpen:(n:Notification)=>void}) {
+  const [error,setError]=useState('');return <div className="notification-list"><ErrorNote error={error}/>{!items.length&&<p className="empty-panel">All quiet for this local profile.</p>}{items.map(n=><button className={`notification-item ${n.read_at?'':'unread'}`} key={n.id} onClick={async()=>{try{await api.readNotification(n.id);onOpen(n);}catch(e){setError((e as Error).message);}}}><strong>{n.text}</strong><small>{dateTimeLabel(n.created_at)} · {n.read_at?'Read':'Unread'}</small></button>)}</div>;
+}
+export function GlobalNotifications(){const [items,setItems]=useState<Notification[]>([]),[open,setOpen]=useState(false),[error,setError]=useState('');const nav=useNavigate();async function load(){try{setItems(await api.notifications());setError('');}catch(e){setError((e as Error).message);}}useEffect(()=>{void load();const refresh=()=>{void load();};window.addEventListener('focus',refresh);window.addEventListener('project-room:changed',refresh);roomUpdates.addEventListener('message',refresh);return()=>{window.removeEventListener('focus',refresh);window.removeEventListener('project-room:changed',refresh);roomUpdates.removeEventListener('message',refresh);};},[]);return <><button className="notification-bell icon-button" aria-label="Notifications" onClick={()=>{setOpen(true);void load();}}><Bell size={22}/>{items.some(n=>!n.read_at)&&<span className="notice-badge">{items.filter(n=>!n.read_at).length}</span>}</button>{open&&<Modal title="Your notifications" variant="right" onClose={()=>setOpen(false)}><ErrorNote error={error}/><NotificationList items={items} onOpen={n=>{setOpen(false);nav(`/projects/${n.project_id}/workspace${noticeQuery(n)}`);void load();}}/></Modal>}</>;}
